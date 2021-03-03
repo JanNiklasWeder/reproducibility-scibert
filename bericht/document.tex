@@ -1,0 +1,49 @@
+\documentclass[twocolumn]{report}
+\usepackage[backend=biber]{biblatex}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{titlesec}
+
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries}{}{0pt}{\Huge}
+
+\addbibresource{DataMining.bib}
+
+\begin{document}
+	\begin{titlepage}
+		\centering
+		%\includegraphics*{pic/logo}\par 
+		\Large Institut für Informatik\par 
+		\vspace{1.5cm}
+		\huge \bfseries Reproducibility of SciBert
+		
+		\vspace{2cm}
+		
+		\Large Jan-Niklas Weder\par
+		\vfill
+		\normalsize
+		\mdseries 
+		\begin{flushleft}
+			\begin{tabular}{l l l}
+			Modul&:& Data Mining\\
+			\end{tabular}
+		\end{flushleft}
+\end{titlepage}
+		
+\pagenumbering{Roman} 
+\tableofcontents
+\clearpage
+\pagenumbering{arabic} 
+
+% include might be a good alternative to onput
+
+\input{./sections/introduction.tex}
+\input{./sections/stateOfTheArt.tex}
+\input{./sections/sci_bert.tex}
+\input{./sections/experiments.tex}
+\input{./sections/discussion.tex}
+\input{./sections/further_development.tex}
+
+\printbibliography
+
+\end{document}
