@@ -1,8 +1,8 @@
 using Pkg
-	Pkg.add("Flux")
-	Pkg.add("Transformers")
+Pkg.add("Flux")
+Pkg.add("Transformers")
 
-using CUDA
+#using CUDA
 using Flux
 using Transformers
 using Transformers.Basic
