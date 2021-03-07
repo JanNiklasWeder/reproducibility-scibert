@@ -4,6 +4,7 @@
 \usepackage{amsmath}
 \usepackage{titlesec}
 
+
 \titleformat{\chapter}[display]
   {\normalfont\bfseries}{}{0pt}{\Huge}
 
@@ -34,7 +35,11 @@
 \pagenumbering{Roman} 
 \tableofcontents
 \clearpage
-\pagenumbering{arabic} 
+\pagenumbering{arabic}
+
+% make subsections unnumbered
+\setcounter{secnumdepth}{1}
+
 
 % include might be a good alternative to onput
 
@@ -44,6 +49,7 @@
 \input{./sections/experiments.tex}
 \input{./sections/discussion.tex}
 \input{./sections/further_development.tex}
+\input{./sections/appendix}
 
 \printbibliography
 
