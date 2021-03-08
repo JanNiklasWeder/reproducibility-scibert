@@ -16,6 +16,7 @@ Nevertheless, both task types will use a dropout of 0.1, cross-entropy for the l
 \section{Classification tasks}
 Both classification tasks will utilize the same architectural structure. This means that the final BERT or SciBERT layer will be followed by a dense or fully connected linear layer. This dense layer then will act as the linear classification layer described in the original paper. 
 \subsection{Text Classification (CLS)}
+Classical sequenz classification tasks or text classification tasks, as they are called in the orginal paper, are in Julia implementable without any particular challanges. Espacially due to the data being in a format which only needs to be loaded and tasks itself only beeing transformation from a text onto a single label. Together with the already discribed architecture for Classification tasks, this makes it straight forward to implement this tasks. We only need to combine Bert and the classification layer and deliver this model the text and label in the correct formats. On the one side this means adding the "[CLS]" token to the text after prepairing the text with the tokenizer and wordpiece and on the other side prepairing the labels in a format which can be read by the model which transforming them into a "OneHotMatrix" for "Flux" which corresponds to a one out of k representation per sequenz.
 \subsection{Relation Classification (REL)}
 \section{Sequenz labeling tasks}
 \subsection{Named Entity Recognition (NER)}
