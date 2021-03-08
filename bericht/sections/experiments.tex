@@ -9,8 +9,7 @@
 	\item optemizer adam
 	\item finetuning for 2 to 5 epochs 
 \end{itemize}
-In the following, we will take a closer look at how the already conceptually described tasks are implemented. Since some tasks utilize the same architecture for the model more precisely the identical architecture for the last layer, we will first explore the classification tasks and then the labeling tasks in more detail. So the order in which the tasks will follow stays the same as earlier.
-
+In the following, we will take a closer look at how the already conceptually described tasks are implemented. Since some tasks utilize the same architecture for the model more precisely the identical architecture for the last layer, we will first explore the classification tasks and then the labeling tasks in more detail. So the order in which the tasks will follow stays the same as earlier.\\
 Nevertheless, both task types will use a dropout of 0.1, cross-entropy for the loss, and Adam as the optimizer, all of this follows the parameter given in the SciBERT paper.
 
 \section{Classification tasks}
