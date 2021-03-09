@@ -1,5 +1,6 @@
 \chapter{State of the art}
 \section{BERT}
+\color{ForestGreen}
 \begin{itemize}
 	\item BERT as revolution
 	\item pretrained-models
@@ -14,11 +15,13 @@
 	\end{itemize}
 	\item extensions of BERT like roBERTa
 \end{itemize}
+\color{black}
 \section{BioBERT}
-BioBERT is one of the extensions of BERT which were created because BERT by itself did not yield the desired results in the biomedical landscape. This observation was oftentimes explained with the differences in word distributions between a general domain such as Wikipedia on which BERT was trained and the highly specialized words which are oftentimes only or with this meaning only used in the corresponding domain. This difference in the underlying corpora not only produces differences in the architecture of the model itself but implies a possible need for adjustments to the used vocabulary and the tokenizer. \cite{Lee2019}
+BioBERT is one of the extensions of BERT which has emerged because BERT by itself did not yield the desired results in the biomedical landscape. This observation has often been related to the differences in word distributions between a general domain such as Wikipedia, on which BERT was trained and the highly specialized words that are used often or with this meaning only in the corresponding domain. This difference in the underlying corpora not only produces differences in the architecture of the model itself but implies a possible need for adjustments to the used vocabulary and the tokenizer. \cite{Lee2019} 
 \newline
-BioBERT itself is a further trained version of BERT. This means the original BERT model was used as basis and further trained on either PubMed abstracts, PubMed central full-text articles or on both. Therfore the authers chose to keep the original BERT vocabulary to be able to use the pretrained version of BERT as basis. This had the advantage that the original model only needed to be further trained on the new corpus and the needed training time could be reduced.
+BioBERT itself is a further trained version of BERT. This means the original BERT model was used as the basis and further trained on either PubMed abstracts, PubMed central full-text articles, or on both. Therefore the authors chose to keep the original BERT vocabulary to be able to use the pretrained version of BERT as the basis. This had the advantage that the original model only needed to be further trained on the new corpus and the needed training time could be reduced.
 
+\color{ForestGreen}
 \section{AOG-BERT}
 \begin{itemize}
 	\item als kontrahend zu SciBERT \cite{Liu2021}
@@ -29,7 +32,8 @@ BioBERT itself is a further trained version of BERT. This means the original BER
 	\item sehr günstig um darauf entsprechende modelle zu trainieren \cite{Dogan2014}
 	\item SciERC /sciie im repo \cite{luan2018multitask}
 \end{itemize}
-Due to the availability of the Datasets used by the original Authors. We will use their prepared Datasets, which are already prepared so that it is easier to use for training of neural nets and still only vary slightly from the original Datasets. The Datasets which we will use are directly retrieved from the SciBERT GitHub page and made available through the DataDeps package which provides an easy way to retrieve data that may or may not be locally available. If it is not already stored locally it will be cached in the local Julia path and inside Julia, DataDeps provides the corresponding paths to the Data and retrieves it from the defined Source if needed. Furthermore, a hash can be defined as well to ensure that the provided data is identical to the expected one.\cite{White2019}\\
+\color{black}
+Due to the availability of the Datasets used by the original authors, we will use their prepared datasets, which are already prepared in a way that it is easier to use them for training and still only vary slightly from the original datasets. The datasets which we will use are directly retrieved from the SciBERT GitHub page and made available through the DataDeps package which provides an easy way to retrieve data that may or may not be locally available. If it is not already stored locally, it will be cached in the local Julia path and inside Julia, DataDeps provides the corresponding paths to the data and retrieves it from the defined source if needed. Furthermore, a hash can be defined as well to ensure that the provided data is identical to the expected one.\cite{White2019}\\
 In the following paragraph, we will take a closer look at the original data and the individual changes that have been made to use those Datasets for the training process.
 \subsection{Chemprot}
-Chemprot is in a JSON lines file format provided. More precisely every line consists of a text and the corresponding label. A field for metadata exists as well but is most of the time not used. In its original format, the Chemprot corpus consists of a develop, test, and train Set of which the develop, test, and train folder correspond to the identically named files inside the chemprot folder provided on the GitHub site of sciBERT. The difference arises from a database-like structure in which the chemprot corpus is originally provided, in contrast to those subdivided information sets where for example the text itself is in another file than the positions and annotations. Those divided pieces of information were combined and are provided in a single file in the already mentioned format. \cite{Beltagy2019,Wang2016}
+Chemprot is in a JSON lines file format provided. More precisely every line consists of a text and the corresponding label. A field for metadata exists as well but is most of the time not used. In its original format, the Chemprot corpus consists of a develop, test, and train set of which the develop, test, and train folder correspond to the identically named files inside the chemprot folder provided on the GitHub site of SciBERT. The difference arises from a database-like structure in which the Chemprot corpus is originally provided, in contrast to those subdivided information sets where for example the text itself is in another file than the positions and annotations. Those divided pieces of information were combined and are provided in a single file in the already mentioned format. \cite{Beltagy2019,Wang2016}

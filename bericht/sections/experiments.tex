@@ -1,4 +1,6 @@
 \chapter{Experiments}
+\label{chap:Experiments}
+\color{ForestGreen}
 \begin{itemize}
 	\item kurze einführung in die test fälle mit einer erklärung, was f1 scores sind
 	\item Alles NLP Aufgaben bei denen Bert "überraschend" gut abschneided
@@ -9,26 +11,32 @@
 	\item optemizer adam
 	\item finetuning for 2 to 5 epochs 
 \end{itemize}
-In the following, we will take a closer look at how the already conceptually described tasks are implemented. Since some tasks utilize the same architecture for the model more precisely the identical architecture for the last layer, we will first explore the classification tasks and then the labeling tasks in more detail. So the order in which the tasks will follow stays the same as earlier.\\
-Nevertheless, both task types will use a dropout of 0.1, cross-entropy for the loss, and Adam as the optimizer, all of this follows the parameter given in the SciBERT paper.
+\color{black}
+In the following, we will take a closer look at how the tasks already described conceptually are implemented. Since some tasks use the same architecture for the model, more precisely the identical architecture for the last layer as the all other always stay the same. We will first examine the classification tasks and then the labeling tasks in more detail. Thus, the order in which the tasks will follow will remain the same as before.\\
+Nevertheless, both task types will use a dropout of 0.1, cross-entropy for loss, and Adam as the optimizer, all following the instructions from the SciBERT paper.
 
 \section{Classification tasks}
-Both classification tasks will utilize the same architectural structure. This means that the final BERT or SciBERT layer will be followed by a dense or fully connected linear layer. This dense layer then will act as the linear classification layer described in the original paper. 
+Both classification tasks use the same architectural structure. This means that the final BERT or SciBERT layer is followed by a dense or fully connected linear layer. This dense layer then acts as the linear classification layer described in the original work. 
 \subsection{Text Classification (CLS)}
-Classical sequenz classification tasks or text classification tasks, as they are called in the orginal paper, are in Julia implementable without any particular challanges. Espacially due to the data being in a format which only needs to be loaded and tasks itself only beeing transformation from a text onto a single label. Together with the already discribed architecture for Classification tasks, this makes it straight forward to implement this tasks. We only need to combine Bert and the classification layer and deliver this model the text and label in the correct formats. On the one side this means adding the "[CLS]" token to the text after prepairing the text with the tokenizer and wordpiece and on the other side prepairing the labels in a format which can be read by the model which transforming them into a "OneHotMatrix" for "Flux" which corresponds to a one out of k representation per sequenz.
+Classic sequence classification tasks or text classification tasks, as they are called in the original paper, can be implemented in Julia without any particular challenges. Especially since the data is already available in a format that mostly only needs to be loaded and the task is only a transformation from a text to a single label. Together with the architecture for classification tasks already described, this makes the implementation of this task very easy. We just need to combine Bert and the classification layer and provide this model with the text and the label in the correct formats. This means, on the one hand, adding the "[CLS]" and "[SEP]" tokens to the text after preparing the text with the tokenizer and wordpiece and, on the other hand, preparing the labels in a format that can be read by the model, which transforms them into a "OneHotMatrix" for "Flux", corresponding to a one out of k representation per sequence.
 \subsection{Relation Classification (REL)}
+
 \section{Sequenz labeling tasks}
 \subsection{Named Entity Recognition (NER)}
+\color{ForestGreen}
 Pretrained model -> linear classification layer with softmax output
+\color{black}
 \subsection{PICO Extraction (PICO)}
 
+\color{ForestGreen}
 \section{DEP}
 dependency  tag and arc embedding of size 100 and biaffine matrix attention 
-\section{Finetuning}
 \section{Frozen embeddings}
+Vorherige experimente unter dem "festhalten" von BERT selbst und nur der anpassung der letzten ebene
+\color{black}
 
 \section{Influences of different platforms}
-This section will take a short look at the usability of different hardware platforms for the creation of transformer models and in the training or testing of those. More precisely we will compare the google-colab environment with an Nvidia GPU and an AMD GPU. Due to the randomness of the allocation of hardware on the google-colab site, I cannot further define the GPU that was used on this platform. The Nvidia GPU that was used is a GeForce 940MX with approximate 2GB VRAM, the AMD GPU on the other side was an RX580 with approximate 8GB of VRAM.\\
-At this point, I will shortly describe how far the ROCM stack of AMD is usable because surprisingly I was able to define the model and make predictions with it in a newly created state. Sadly due to the instability in the ROCM stack, the Linux kernel wasn't capable of using the GPU anymore after an update which probably broke some intern dependencies on which the kernel and the ROCM driver relay and therefore the video output of the computer was not usable anymore. Even though this shows that in fact, an AMD GPU is capable of running the Transformer package and at least load a defined model. Even though I cannot disclose whether the model could be trained or in any other way further used. This fact in itself is surprising since AMD itself describes the support status of the RX580 as it "may or may not work" and Julia describes the support of AMD GPUs as level 3 which corresponds to the lowest level of support. (verweis zu der aussage)[belege und verweis zu ROCM]\\
-Still, I would discourage anyone from installing the ROCM stack on any productive system since it is still unstable and therfore I would recommend experimenting only in some form of a virtualized environment. Of course, this warning only applies to systems that rely on a working video output.\\
-Due to the failure with the ROCM stack, the following part will only consider the MX940 and the google-colab environment.
+In this section, we will take a brief look at the usability of different hardware platforms for creating transformer models and when training or testing them. More specifically, we will compare the google-colab environment with an Nvidia GPU and an AMD GPU. Due to the randomness of the assignment of hardware on the google-colab side, I cannot further define the GPU that was used on this platform. The Nvidia GPU used was a GeForce 940MX with about 2GB of VRAM, and the AMD GPU on the other side was an RX580 with about 8GB of VRAM.
+At this point I will briefly describe the extent to which AMD's ROCM stack is usable, because surprisingly I was able to define the model and make predictions with it in a newly generated state. Unfortunately, due to instability in the ROCM stack, the Linux kernel was no longer able to use the GPU after an update that must have broken some internal dependencies that the kernel and ROCM driver rely on, and thus the video output of the computer was also unusable. Even though this shows that an AMD GPU is indeed capable of running the Transformer package and loading at least a defined model. Even though I can't disclose whether the model could be trained or otherwise used further. This fact in itself is surprising, since AMD itself describes the support status of the RX580 as "may or may not work" and Julia describes AMD GPU support as Level 3, which is the lowest level of support. (verweis zu der aussage)[belege und verweis zu ROCM]\\
+However, I would advise anyone against installing the ROCM stack on a production system, as it is still unstable and I would therefore recommend experimenting only in some form of virtualized environment. Of course, this warning only applies to systems that rely on working video output.\\
+Due to the failure with the ROCM stack, only the MX940 and the google-colab environment will be considered in the following part. These two platforms will not only be compared, but also how they behave in the face of two different implementations written in Julia and Python.
