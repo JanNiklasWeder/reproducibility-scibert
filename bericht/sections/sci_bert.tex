@@ -1,5 +1,23 @@
 \chapter{SciBert}
-SciBERT utilises the orignal BERT architecture and utilises its adaptability and universal applicability. SciBERT is a version of BERT that is trained on a different corpus. This is supposed to make SciBERT better at understanding natural language which comes from its designated domain. More precisely in this instance the biomedical and computer science domain. In the original paper, the authors presented 4 different versions of SciBERT 2 which utilize the standard BERT Vocabulary, and 2 which use a specialized vocabulary to represent the vocabulary of the corpus better. It should be noted that the 2 different vocabularies overlap only by approximately $42\%$. This shows how different the two underlying corpora are and thus makes the assumption that the SciBERT versions which utilize this adjusted vocabulary might have only through this better to the domain adapted vocabulary already an advantage over the standard BERT model and the SciBERT model which utilizes BERTs vocabulary.
+SciBERT uses the original BERT architecture and thus includes customizability and universal applicability. SciBERT is a version of BERT that is trained on a different corpus. This is supposed to make SciBERT better at understanding natural language which comes from its designated domain. More precisely in this instance the biomedical and computer science domain. In the original paper, the authors presented four different versions of SciBERT two which utilize the standard BERT Vocabulary, and two which use a specialized vocabulary to represent the vocabulary of the corpus better. It should be noted that the two different vocabularies overlap only by approximately $42\%$. This shows how different the two underlying corpora are and thus makes the assumption that the SciBERT versions which utilise this adjusted vocabulary might have only through this better to the domain adapted vocabulary already an advantage over the standard BERT model and the SciBERT model which uses BERTs vocabulary.
+
+\section{Experiments to be reproduced}
+In this section, we will take a brief look at the experiments performed in the original paper and briefly discuss what these experiments are about. To do this, we will split the tasks into two different parts. First, we will take a look at the so-called classification tasks and what this category entails, and then we will move on to the so-called labeling tasks. How these tasks are implemented in detail we will discuss later in \autoref{chap:Experiments}.
+\subsection{Classification tasks}
+Classification tasks, as the name suggests, describe how we "classify" some input data. This includes tasks such as choosing the right label for a given text or word. In the world of BERT, this means that BERT must determine which label best matches a given sequence of tokens or a single token. 
+\subsubsection{Text Classification (CLS)}
+A text classification task corresponds to the example given earlier. Thus, the model must predict the correct label for the given text. This is the same problem definition as in the SciBERT work.
+\subsubsection{Relation Classification (REL)}
+The relation classification task can be considered as another type of classification problem. Here, the model must choose the correct label for two given parts of a sentence. The resulting label can then be interpreted as the predicted relation between the two given parts of the sentence.
+\subsection{Sequenz labeling tasks}
+Unlike classification tasks, a single sentence can have multiple labels. This makes the model, in general, more complex but provides us with the flexibility to define a given sentence with many properties which are expressed by the labels. Thus, we can obtain any given combination of labels.
+\subsubsection{Named Entity Recognition (NER)}
+\subsection{PICO Extraction (PICO)}
+
+\color{ForestGreen}
+\subsection{DEP ?}
+dependency  tag and arc embedding of size 100 and biaffine matrix attention \\
+(maybe why it wasn't considered here any further ? [abhängig davon ob noch implementiert])
 
 \section{Corpus}
 Comparison
@@ -7,3 +25,4 @@ Comparison
 BaseVocab vs. SCIVocab\\
 ! $\approx 42\%$ overlap
 \subsection{SentencePiece}
+\color{black}
