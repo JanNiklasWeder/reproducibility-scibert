@@ -19,9 +19,7 @@
 \section{BioBERT}
 BioBERT is one of the extensions of BERT which has emerged because BERT by itself did not yield the desired results in the biomedical landscape. This observation has often been related to the differences in word distributions between a general domain such as Wikipedia, on which BERT was trained and the highly specialized words that are used often or with this meaning only in the corresponding domain. This difference in the underlying corpora not only produces differences in the architecture of the model itself but implies a possible need for adjustments to the used vocabulary and the tokenizer. \cite{Lee2019} 
 \newline
-\color{red}
 Based on this prior knowledge, it was hypothesized that a model that takes these particularities into account should perform significantly better than general models in tasks of this specific domain. Based on this hypothesis, BioBERT was created. A model that should be better adapted to the biomedical domain than BERT.
-\color{bacl}
 \newline
 Nevertheless, BioBERT itself is only a further trained version of BERT. This means the original BERT model was used as the basis and further trained on either PubMed abstracts, PubMed central full-text articles, or on both. Therefore the authors chose to keep the original BERT vocabulary to be able to use the pretrained version of BERT as the basis. This had the advantage that the original model only needed to be further trained on the new corpus and the needed training time could be reduced.
 
