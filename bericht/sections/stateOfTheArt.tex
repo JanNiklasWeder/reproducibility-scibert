@@ -23,11 +23,14 @@ Based on this prior knowledge, it was hypothesized that a model that takes these
 \newline
 Nevertheless, BioBERT itself is only a further trained version of BERT. This means the original BERT model was used as the basis and further trained on either PubMed abstracts, PubMed central full-text articles, or on both. Therefore the authors chose to keep the original BERT vocabulary to be able to use the pretrained version of BERT as the basis. This had the advantage that the original model only needed to be further trained on the new corpus and the needed training time could be reduced.
 
-\color{ForestGreen}
+\color{red}
 \section{AOG-BERT}
+	Another approach that does not only aim at matching the corpus on which BERT is trained better to the later domain, but at the same time tries to teach the model a more extensive understanding of the texts is AOG-BERT. With this further goal, however, the training strategy underlying BERT needs to be adapted as well, because as we saw earlier, BERT's pre-training is based only on a Masklm task and a Nextsentence classification. Although these two tasks together ensure that we get a decent initial model, the question remains whether specific tasks can be solved better by a more specific training in the pre-training process or by embedding additional information.
+	Based on this, one could argue that a model with domain entity knowledge could perform better than a model that does not use this information. For example, \citeauthor{Liu2021} argue that specific institutes may be more focused on specific scientific domains and that this knowledge could help the model to assign a paper to a research domain. Although it should be reasonable to assume that the actual text should be sufficient to assign a paper to a research area, this knowledge might prove beneficial for the model. 
 \begin{itemize}
 	\item als kontrahend zu SciBERT \cite{Liu2021}
 \end{itemize}
+\color{ForestGreen}
 \section{Datasets}
 \begin{itemize}
 	\item zum Beispiel NCBI-Disease (versuch einen goldstandard für corpora zu erstellen)
