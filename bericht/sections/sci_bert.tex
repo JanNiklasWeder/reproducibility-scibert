@@ -1,16 +1,17 @@
 \chapter{SciBert}
 SciBERT uses the original BERT architecture and thus includes customizability and universal applicability. SciBERT is a version of BERT that is trained on a different corpus. This is supposed to make SciBERT better at understanding natural language which comes from its designated domain. More precisely in this instance the biomedical and computer science domain. In the original paper, the authors presented four different versions of SciBERT two which utilize the standard BERT Vocabulary, and two which use a specialized vocabulary to represent the vocabulary of the corpus better. It should be noted that the two different vocabularies overlap only by approximately $42\%$. This shows how different the two underlying corpora are and thus makes the assumption that the SciBERT versions which utilise this adjusted vocabulary might have only through this better to the domain adapted vocabulary already an advantage over the standard BERT model and the SciBERT model which uses BERTs vocabulary.
 
-\color{red}
+
 While the architecture used in the SciBERT model is described in great detail, as well as the changes made for specific tasks, there are some missing pieces of information that underlie certain decisions, and some decisions were made based on previous models and are therefore not necessarily transferable to this new model without some restrictions.
 
 The first thing to mention here is that the corpus on which the model is trained is not specified precisely enough or that the actual data used cannot be traced.  Only the source of the data was described, but not the selected data, and this information does not seem to be reproducible at all.
 
 Another example would be the architecture for the tasks themselves. This is determined without considering other possibilities that could potentially produce similar or even better results. Likewise, the optimizer, dropout, and loss function are referenced from another paper without considering the possibility that an alternative might be more appropriate. A similar situation can be observed for the batch size and the choice concerning the number of epochs and the learning rates being considered. While several options are mentioned for epochs and learning rates, this is followed by settling for the best epoch and learn rate in each case. Furthermore, the decisions regarding learn rate and epoch are not discussed further and thus the information on the exact influence of the learning rate and the number of epochs is missing.
 Another aspect would be that of tasks and grades. Here, some frequently used tasks were used without further explanation. In addition, the selected scores are based solely on other work and are not further justified or extended by other possible scores. Also, only one score is described here, which is supposed to be an average of several attempts, and it would have been more useful to include information about how much the scores vary.  
+
+\color{red}
+In this paper, we will focus on the influence of the number of epochs on the score as well as on the change of the loss over time. In particular, we will look into how the model changes from epoch to epoch. At the same time we explore whether the range of two to four epochs considered in the original paper is sufficient or whether more epochs might be reasonable. To be more precise, we will look at the range of one to ten epochs and consider the changes in the loss and the score. This will then be extended using different learning rates to show how these affect the speed of convergence of the model. 
 \color{black}
-
-
 
 \section{Experiments to be reproduced}
 In this section, we will take a brief look at the experiments performed in the original paper and briefly discuss what these experiments are about. To do this, we will split the tasks into two different parts. First, we will take a look at the so-called classification tasks and what this category entails, and then we will move on to the so-called labeling tasks. How these tasks are implemented in detail we will discuss later in \autoref{chap:Experiments}.
