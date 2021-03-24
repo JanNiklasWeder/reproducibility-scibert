@@ -1,5 +1,12 @@
 \chapter{State of the art}
 \section{BERT}
+\color{red}
+BERT is a modern approach to create a model that can take into account the context of a word in both directions. Thus, the model would be better able to interpret words through their context. Based on this architecture, a model is then pretrained on a corpus using masklm and nextsentence tasks. This base model can then be used for new tasks with relatively little effort.
+
+The Masklm task consists of masking random words in a sentence and having the model guess what the masked word actually was. This task is commonly referred to as masked ML task or MLM for short. For training the original BERT model, about 15\% of all input tokens are masked and by predicting the missing words, BERT is supposed to learn an understanding of natural language.
+
+The Next Sentence Prediction task consists of inferring relationships between two sentences. Because this task is not covered by MLM. The Next Sentence Prediction, or NSP for short, is intended to teach the model of a given sentence following a previously given one by means of a binary classification task. Especially QA and NLI are supposed to benefit from this training. 
+\color{black}
 \color{ForestGreen}
 \begin{itemize}
 	\item BERT as revolution
@@ -21,9 +28,9 @@ BioBERT is one of the extensions of BERT which has emerged because BERT by itsel
 \newline
 Based on this prior knowledge, it was hypothesized that a model that takes these particularities into account should perform significantly better than general models in tasks of this specific domain. Based on this hypothesis, BioBERT was created. A model that should be better adapted to the biomedical domain than BERT.
 \newline
-Nevertheless, BioBERT itself is only a further trained version of BERT. This means the original BERT model was used as the basis and further trained on either PubMed abstracts, PubMed central full-text articles, or on both. Therefore the authors chose to keep the original BERT vocabulary to be able to use the pretrained version of BERT as the basis. This had the advantage that the original model only needed to be further trained on the new corpus and the needed training time could be reduced. \color{red} For the tokenizer WordPiece was used to handle the problem with unknown words. It was also considered to create a new vocabulary, but this idea was discarded in order to preserve the previously mentioned advantage of being able to utilize the pre-trained BERT model to save resources. 
+Nevertheless, BioBERT itself is only a further trained version of BERT. This means the original BERT model was used as the basis and further trained on either PubMed abstracts, PubMed central full-text articles, or on both. Therefore the authors chose to keep the original BERT vocabulary to be able to use the pretrained version of BERT as the basis. This had the advantage that the original model only needed to be further trained on the new corpus and the needed training time could be reduced. For the tokenizer WordPiece was used to handle the problem with unknown words. It was also considered to create a new vocabulary, but this idea was discarded in order to preserve the previously mentioned advantage of being able to utilize the pre-trained BERT model to save resources. 
 As a result, it was observed that BioBERT performed better than BERT in version 1.0 that was based on PubMed abstracts and the full text articles of PubMed Central biomedical landscape with very few exceptions. Although the actual measured improvements sometimes vary quite significantly, it can be safely concluded that even continued training of BERT on a biomedical corpus can lead to significant improvements on tasks from this domain. 
-	\color{black}
+
 
 \section{S2ORC-BERT}
 S2ORC, known as the Semantic Scholar Open Research Corpus, is a corpus that contains a large number of papers as well as metadata and the references associated with the papers. According to the authors, the full text portion of the corpus alone is the largest structured academic text corpus available in April 2020. This corpus is based on semantic scholar papers and thus comes from several different origins. Although the main part of the paper is the acquisition and processing of papers and the resulting construction of the S2ORC corpus, the authors also use that corpus to continue training BERT. This is relatively reminiscent to the basic idea and the approach, which is also behind BioBERT, but in this case it is closer to the approach used for SciBERT. 
