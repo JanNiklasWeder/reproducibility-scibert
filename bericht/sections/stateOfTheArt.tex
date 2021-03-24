@@ -1,12 +1,10 @@
 \chapter{State of the art}
 \section{BERT}
-\color{red}
 BERT is a modern approach to create a model that can take into account the context of a word in both directions. Thus, the model would be better able to interpret words through their context. Based on this architecture, a model is then pretrained on a corpus using masklm and nextsentence tasks. This base model can then be used for new tasks with relatively little effort.
 
 The Masklm task consists of masking random words in a sentence and having the model guess what the masked word actually was. This task is commonly referred to as masked ML task or MLM for short. For training the original BERT model, about 15\% of all input tokens are masked and by predicting the missing words, BERT is supposed to learn an understanding of natural language.
 
 The Next Sentence Prediction task consists of inferring relationships between two sentences. Because this task is not covered by MLM. The Next Sentence Prediction, or NSP for short, is intended to teach the model of a given sentence following a previously given one by means of a binary classification task. Especially QA and NLI are supposed to benefit from this training. 
-\color{black}
 \color{ForestGreen}
 \begin{itemize}
 	\item BERT as revolution
