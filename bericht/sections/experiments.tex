@@ -15,6 +15,14 @@
 In the following, we will take a closer look at how the tasks already described conceptually are implemented. Since some tasks use the same architecture for the model, more precisely the identical architecture for the last layer as the all other always stay the same. We will first examine the classification tasks and then the labeling tasks in more detail. Thus, the order in which the tasks will follow will remain the same as before.\\
 Nevertheless, both task types will use a dropout of 0.1, cross-entropy for loss, and Adam as the optimizer, all following the instructions from the SciBERT paper.
 
+\color{red}
+\section{Simple tests and examples}
+To ensure that these individual areas function correctly and that errors have not already sneaked in here. There are several outputs that show the functionality in a small scale and can ideally catch some errors. These outputs can be found in the Jupyter Notebook under Tests. In this section, the first record and the corresponding label of the training dataset are displayed first. The same is repeated for the test data set. After these examples, a dry run of the tokenizer follows. This is to assure us that the tokenize function, which puts the data into a form that the transformer can read, is working correctly. This is shown with a sentence that leads to the same result both by hand and by the function.  Next, the tokenization of special tokens is examined. This is to guarantee that the special tokens needed for the NER task are correctly recognized and translated. This is followed by some examples that test the functionality of the loss function and the embedding of the previously translated sentence. At this point, however, the verification of correctness becomes difficult, since the interpretation of the representation of the CLS token is no longer directly evaluable for humans. Although it can be shown that this process functions and presumably also operates correctly, this example no longer guarantees this.  This is followed by the tests that refer to the evaluation, in other words to the F1 score.Here we first consider whether the formats have been converted correctly so that the Metric package which is used for the calculation can read them and then we briefly compare whether the example delivers the expected F1 score. 
+
+\section{Hardware requirements}
+\section{Data preprocessing}
+\color{black}
+
 \section{Classification tasks}
 Both classification tasks use the same architectural structure. This means that the final BERT or SciBERT layer is followed by a dense or fully connected linear layer. This dense layer then acts as the linear classification layer described in the original work. 
 \subsection{Text Classification (CLS)}
