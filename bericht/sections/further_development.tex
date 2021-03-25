@@ -1,1 +1,9 @@
-\chapter{Further development}
+\appendix
+\chapter*{Appendices}
+\addcontentsline{toc}{chapter}{Appendices}  
+\renewcommand\thesection{\Alph{section}}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+\section{Data}
+The data used is based on the already processed data used in SciBERT \cite{Beltagy2019} and is loaded and processed directly in the code. The underlying data can therefore be found \href{https://github.com/allenai/scibert}{here}.
+\section{Code}
+The complete code used for this project can be found \href{https://github.com/JanNiklasWeder/reproducibility-scibert}{here}. The code makes use of the already mentioned Julia packages.

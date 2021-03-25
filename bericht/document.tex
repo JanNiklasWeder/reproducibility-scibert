@@ -3,6 +3,9 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage[dvipsnames]{xcolor}
+
 
 \titleformat{\chapter}[display]
   {\normalfont\bfseries}{}{0pt}{\Huge}
@@ -16,7 +19,7 @@
 		%\includegraphics*{pic/logo}\par 
 		\Large Institut für Informatik\par 
 		\vspace{1.5cm}
-		\huge \bfseries Reproducibility of SciBert
+		\huge \bfseries Reproducibility of SciBERT
 		
 		\vspace{2cm}
 		
@@ -34,7 +37,11 @@
 \pagenumbering{Roman} 
 \tableofcontents
 \clearpage
-\pagenumbering{arabic} 
+\pagenumbering{arabic}
+
+% make subsections unnumbered
+\setcounter{secnumdepth}{1}
+
 
 % include might be a good alternative to onput
 

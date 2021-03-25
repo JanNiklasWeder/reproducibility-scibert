@@ -1,7 +1,21 @@
 \chapter{SciBert}
-\section{Corpus}
-Comparison
-\section{Vocabulary}
-BaseVocab vs. SCIVocab\\
-! $\approx 42\%$ overlap
-\subsection{SentencePiece}
+SciBERT uses the original BERT architecture and thus incorporates adaptability and broad applicability.\cite{Beltagy2019,Devlin2018} SciBERT is a version of BERT trained on a different corpus. This is intended to make SciBERT better at understanding natural language that originates from the domain it is intended for. More specifically, in this case, the biomedical and computer science domain. In the original paper, the authors presented four different versions of SciBERT, two that use the standard vocabulary of BERT and two that use a specialized vocabulary to better represent the vocabulary of the corpus. It is worth noting that the two different vocabularies overlap by only about $42\%$.This shows how different the two underlying corpora are, and therefore suggests that the SciBERT versions using this adapted vocabulary may perform significantly differently than the standard BERT model simply because of this more adapted vocabulary for the given domain already, and this might also be the case when compared to the SciBERT model using the vocabulary from BERT. \cite{Beltagy2019}
+
+While the architecture used in the SciBERT model is described in great detail, as well as the changes made for specific tasks, there are some missing pieces of information that underlie certain decisions, and some decisions were made based on previous models and are therefore not necessarily transferable to this new model without some restrictions.
+
+The first thing to mention here is that the corpus on which the model is trained is not specified precisely enough or that the actual data used cannot be traced.  Only the source of the data was described, but not the selected data \cite{Beltagy2019}, and this information does not seem to be reproducible at all.
+
+Another example would be the architecture for the tasks themselves. This is determined without considering other possibilities that could potentially produce similar or even better results. Likewise, the optimizer, dropout, and loss function are referenced from another paper without considering the possibility that an alternative might be more appropriate. A similar situation can be observed for the batch size and the choice concerning the number of epochs and the learning rates being considered. While several options are mentioned for epochs and learning rates, this is followed by settling for the best epoch and learn rate in each case. Furthermore, the decisions regarding learn rate and epoch are not discussed further and thus the information on the exact influence of the learning rate and the number of epochs is missing.
+Another aspect would be that of tasks and grades. Here, some frequently used tasks were used without further explanation. In addition, the selected scores are based solely on other work and are not further justified or extended by other possible scores. Also, only one score is described here, which is supposed to be an average of several attempts, and it would have been more useful to include information about how much the scores vary.  
+
+
+In this paper, we will focus on the influence of the number of epochs on the score as well as on the change of the loss over time. In particular, we will look into how the model changes from epoch to epoch. At the same time we explore whether the range of two to four epochs considered in the original paper is sufficient or whether more epochs might be reasonable. To be more precise, we will look at the range of one to ten epochs and consider the changes in the loss and the score. This will then be extended using different learning rates to show how these affect the speed of convergence of the model.  
+
+%\section{Experiments to be reproduced}
+%In this section, we will take a brief look at the experiments performed in the original paper and briefly discuss what these experiments are about. To do this, we will split the tasks into two different parts. First, we will take a look at the so-called classification tasks and what this category entails, and then we will move on to the so-called labeling tasks. How these tasks are implemented in detail we will discuss later in \autoref{chap:Experiments}.
+%\subsection{Classification tasks}
+%Classification tasks, as the name suggests, describe how we "classify" some input data. This includes tasks such as choosing the right label for a given text or word. In the world of BERT, this means that BERT must determine which label best matches a given sequence of tokens or a single token. 
+%\subsubsection{Text Classification (CLS)}
+%A text classification task corresponds to the example given earlier. Thus, the model must predict the correct label for the given text. This is the same problem definition as in the SciBERT work.
+%\subsubsection{Relation Classification (REL)}
+%The relation classification task can be considered as another type of classification problem. Here, the model must choose the correct label for two given parts of a sentence. The resulting label can then be interpreted as the predicted relation between the two given parts of the sentence.
