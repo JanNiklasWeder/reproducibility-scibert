@@ -1,25 +1,35 @@
 \chapter{State of the art}
 \section{BERT}
+\color{red}
+\begin{figure}
+	\includegraphics[width=\linewidth]{src/BERT.pdf}
+	\caption{Schematic illustration of BERTs architecture. \newline Source: Adapted from \cite{Devlin2018}}
+\end{figure}
 BERT is a modern approach to create a model that can take into account the context of a word in both directions. Thus, the model would be better able to interpret words through their context. Based on this architecture, a model is then pretrained on a corpus using masklm and nextsentence tasks. This base model can then be used for new tasks with relatively little effort.
 
 The Masklm task consists of masking random words in a sentence and having the model guess what the masked word actually was. This task is commonly referred to as masked ML task or MLM for short. For training the original BERT model, about 15\% of all input tokens are masked and by predicting the missing words, BERT is supposed to learn an understanding of natural language.
 
 The Next Sentence Prediction task consists of inferring relationships between two sentences. Because this task is not covered by MLM. The Next Sentence Prediction, or NSP for short, is intended to teach the model of a given sentence following a previously given one by means of a binary classification task. Especially QA and NLI are supposed to benefit from this training. 
-\color{ForestGreen}
-\begin{itemize}
-	\item BERT as revolution
-	\item pretrained-models
-	\item usefull even without finetuning
-	\item $\Rightarrow$ unexpected precision
-	\item nowadays used for many different NLP tasks
-	\item Architecture of BERT
-	\begin{itemize}
-		\item explain corpora
-		\item explain vocabulary
-		\item explain tokenizer
-	\end{itemize}
-	\item extensions of BERT like roBERTa
-\end{itemize}
+
+These two tasks were then used to train BERT on the BooksCorpus and on English Wikipedia texts. At this point, a pre-trained model is obtained, which can then be used in various ways depending on the particular task. Further training on a a new task is referred to as finetuning. 
+
+Since finetuning tasks are quite specific, the details depend on the selected task. However, in general, the procedure can be classified into one of two groups. First, there are classification tasks based on complete sentences. These generally use the representation of the CLS token with a classifier layer. The other group of tasks operates at the token level and therefore uses the representation of the tokens using one or more additional layers. Once the architecture is set, the fine-tuning can take place. This is done end to end, so the whole transformer, i.e. BERT and the task specific part are tuned together. If BERT is not supposed to be changed, there is generally the possibility to freeze specific layers and thus prevent the change of weights in these. This leads to the fact that for example only the task specific part of the transformer is trained. 
+
+%\begin{itemize}
+%	\item BERT as revolution
+%	\item pretrained-models
+%	\item usefull even without finetuning
+%	\item $\Rightarrow$ unexpected precision
+%	\item nowadays used for many different NLP tasks
+%	\item Architecture of BERT
+%	\begin{itemize}
+%		\item explain corpora
+%		\item explain vocabulary
+%		\item explain tokenizer
+%	\end{itemize}
+%	\item extensions of BERT like roBERTa
+%\end{itemize}
+
 \color{black}
 \section{BioBERT}
 BioBERT is one of the extensions of BERT which has emerged because BERT by itself did not yield the desired results in the biomedical landscape. This observation has often been related to the differences in word distributions between a general domain such as Wikipedia, on which BERT was trained and the highly specialized words that are used often or with this meaning only in the corresponding domain. This difference in the underlying corpora not only produces differences in the architecture of the model itself but implies a possible need for adjustments to the used vocabulary and the tokenizer. \cite{Lee2019} 
