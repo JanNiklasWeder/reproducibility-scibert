@@ -1,6 +1,5 @@
 \chapter{State of the art}
 \section{BERT}
-\color{red}
 \begin{figure}
 	\includegraphics[width=\linewidth]{src/BERT.pdf}
 	\caption{Schematic illustration of BERTs architecture. \newline Source: Adapted from \cite{Devlin2018}}
@@ -30,7 +29,6 @@ Since finetuning tasks are quite specific, the details depend on the selected ta
 %	\item extensions of BERT like roBERTa
 %\end{itemize}
 
-\color{black}
 \section{BioBERT}
 BioBERT is one of the extensions of BERT which has emerged because BERT by itself did not yield the desired results in the biomedical landscape. This observation has often been related to the differences in word distributions between a general domain such as Wikipedia, on which BERT was trained and the highly specialized words that are used often or with this meaning only in the corresponding domain. This difference in the underlying corpora not only produces differences in the architecture of the model itself but implies a possible need for adjustments to the used vocabulary and the tokenizer. \cite{Lee2019} 
 \newline
