@@ -13,7 +13,8 @@ BERT is a modern approach to create a model that can take into account the conte
 
 The masklm task consists of masking random words in a sentence and having the model guess what the masked word actually was. This task is commonly referred to as masked ML task or MLM for short. For training the original BERT model, about 15\% of all input tokens are masked and by predicting the missing words, BERT is supposed to learn an understanding of natural language. In the figure \ref{fig:bert} this would lead to the situation that some tokens of the lowest row are masked. \cite{Devlin2018}
 
-The Next Sentence Prediction task consists of inferring relationships between two sentences. Because this task is not covered by MLM. The Next Sentence Prediction, or NSP for short, is intended to teach the model of a given sentence following a previously given one by means of a binary classification task. This task uses the CLS token as representation of the tokens that are to be classified. Especially QA and NLI are supposed to benefit from this training. \cite{Devlin2018}
+The Next Sentence Prediction task consists of inferring relationships between two sentences. Because this task is not covered by MLM. The Next Sentence
+prediction, or NSP, is designed to enable the model to acquire an understanding of complete sentences. This is accomplished by a classification task that requires the model to predict whether two given sentences follow each other. Therefore, the CLS tokens are used for this task. Especially QA and NLI are supposed to benefit from this training. \cite{Devlin2018}
 
 These two tasks were then used to train BERT on the BooksCorpus and on English Wikipedia texts. At this point, a pretrained model is obtained, which can then be used in various ways depending on the particular task. Further training on a a new task is referred to as finetuning. \cite{Devlin2018}
 
